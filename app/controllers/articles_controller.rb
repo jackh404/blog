@@ -13,7 +13,8 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-
+    @article.status = "public" if @article.status.blank?
+    puts "well we made it this far"
     if @article.save
       redirect_to @article
     else
